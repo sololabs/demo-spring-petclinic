@@ -1,12 +1,12 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: petclinic
 spec:
   selector:
     matchLabels:
       app: petclinic
-  replicas: 1
+  serviceName: petclinic
   template:
     metadata:
       labels:
