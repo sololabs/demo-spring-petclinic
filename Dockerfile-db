@@ -1,4 +1,5 @@
-FROM mysql:5.7
+FROM mysql:8
 
 ADD src/main/resources/db/mysql/schema.sql /docker-entrypoint-initdb.d/0schema.sql
 ADD src/main/resources/db/mysql/data.sql /docker-entrypoint-initdb.d/1data.sql
+ADD src/main/resources/db/mysql/patch.sql /docker-entrypoint-initdb.d/2patch.sql
