@@ -1,4 +1,4 @@
-apiVersion: skaffold/v1beta9
+apiVersion: skaffold/v1beta13
 kind: Config
 build:
   artifacts:
@@ -8,9 +8,8 @@ build:
     - image: petclinic-db
       docker:
         dockerfile: Dockerfile-db
-  tagPolicy:
-    gitCommit: {}
-  local: {}
+  local:
+    push: true
 deploy:
   kubectl:
     manifests:
