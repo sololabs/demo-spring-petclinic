@@ -1,4 +1,4 @@
-FROM adoptopenjdk/maven-openjdk11:latest as builder
+FROM adoptopenjdk/maven-openjdk11-openj9:latest as builder
 
 WORKDIR /build
 
@@ -10,7 +10,7 @@ COPY src/ /build/src
 
 RUN mvn clean package -DskipTests=true -Dspring.profiles.active=mysql
 
-FROM adoptopenjdk/openjdk11:alpine
+FROM adoptopenjdk/openjdk11-openj9:alpine
 
 COPY --from=builder /build/target/spring-petclinic-2.1.0.BUILD-SNAPSHOT.jar /app.jar
 
